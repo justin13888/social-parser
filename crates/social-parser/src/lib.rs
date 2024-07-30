@@ -1,11 +1,11 @@
-use neon::prelude::*;
+mod bindings;
+pub mod platforms;
 
-fn hello(mut cx: FunctionContext) -> JsResult<JsString> {
-    Ok(cx.string("hello node"))
-}
+use bindings::typescript;
+
+use neon::prelude::*;
 
 #[neon::main]
 fn main(mut cx: ModuleContext) -> NeonResult<()> {
-    cx.export_function("hello", hello)?;
-    Ok(())
+    typescript::init_context(&mut cx)
 }
