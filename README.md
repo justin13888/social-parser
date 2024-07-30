@@ -11,6 +11,7 @@ Rust and TypeScript library bindings are provided and can be used for anything (
 - **Data normalization**: Normalizes data from different platforms into a common format.
 - **Export formats**: Supports exporting data to normalized format
 - **Language support**: Supports multiple common languages for data processing.
+- **Logging**: Provides logging implementation for each language binding.
 
 ## Getting Started
 
