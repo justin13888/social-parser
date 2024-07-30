@@ -1,14 +1,46 @@
 # Social Parser
 
-Library to process archive bundles from social platforms like Facebook, Instagram, Discord, etc.
+Library to process archive bundles from social platforms like Facebook, Instagram, Discord, etc. New features and reliability improvements are added regularly.
+
+Rust and TypeScript library bindings are provided and can be used for anything (e.g. collect your personal social media data to LoRA finetune an LLM). Other languages may be supported in the future.
+
+## Features
+
+- **Support for multiple social platforms**: See API documentation for a list of supported platforms. <!-- TODO: Add link -->
+- **File format handling**: Able to parse entire archive bundles at once.
+- **Data normalization**: Normalizes data from different platforms into a common format.
+- **Export formats**: Supports exporting data to normalized format
+- **Language support**: Supports multiple common languages for data processing.
+
+## Getting Started
+
+### Installation
+
+To install the package, run:
+
+```bash
+npx jsr add social-parser
+```
+<!-- TODO: Add other binding info -->
+
+### Usage
+
+Refer to the [API documentation](API.md) for details on how to use the library.
+<!-- TODO: Update -->
+
+## Contributing
+
+Contributions are always welcomed! Start by forking the repository and making a PR when follow. Sharing bugs and making feature requests are also appreciated.
+
+See the [CONTRIBUTING](CONTRIBUTING.md) file for more information.
 
 ## FAQ
 
-Q: How do I use this library?
-A: This is provided as a TypeScript library. It is distrbuted as a package on npm. You can install it using `npm install social-parser`.
+Q: Why write in Rust?
+A: Rust was chosen more for its broad binding support than its memory-safe, runtime performance. When the library started in 2023, there was no better option than Rust for this use case.
 
-Q: Why write in TypeScript?
-A: TypeScript was chosen for its wide familiarity among developers and natural fit with JSON, which is common in archive bundles. While languages like Rust might offer slightly better performance, the difference is negligible for this use case. TypeScript provides a good balance of type safety, development speed, and a rich ecosystem, making it well-suited for this project.
+Q: Why distribute the TypeScript version on jsr?
+A: JSR provides a modern package registry to deploy and distrbute packages in ESM and CJS with backwards compatibility with the npm ecosystem.
 
 ## License
 
