@@ -19,7 +19,7 @@ Rust and TypeScript library bindings are provided and can be used for anything (
 To install the package, run:
 
 ```bash
-npx jsr add social-parser
+npm install social-parser
 ```
 <!-- TODO: Add other binding info -->
 
