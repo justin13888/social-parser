@@ -1,0 +1,14 @@
+{
+  "name": "social-parser-typescript-example",
+  "module": "index.ts",
+  "type": "module",
+  "dependencies": {
+    "social-parser": "link:social-parser"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
