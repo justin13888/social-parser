@@ -1,1 +1,1 @@
-pub mod instagram;
+pub mod meta;
