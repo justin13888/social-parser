@@ -1,0 +1,39 @@
+{
+  "name": "@social-parser/win32-x64-msvc",
+  "description": "Prebuilt binary package for `social-parser` on `win32-x64-msvc`.",
+  "version": "0.1.0",
+  "os": [
+    "win32"
+  ],
+  "cpu": [
+    "x64"
+  ],
+  "main": "index.node",
+  "files": [
+    "index.node"
+  ],
+  "neon": {
+    "type": "binary",
+    "rust": "x86_64-pc-windows-msvc",
+    "node": "win32-x64-msvc",
+    "os": "win32",
+    "arch": "x64",
+    "abi": "msvc"
+  },
+  "author": "Justin Chung",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/justin13888/social-parser.git"
+  },
+  "keywords": [
+    "social",
+    "cross-platform",
+    "archive",
+    "data-processing"
+  ],
+  "bugs": {
+    "url": "https://github.com/justin13888/social-parser/issues"
+  },
+  "homepage": "https://github.com/justin13888/social-parser#readme",
+  "license": "LGPL-3.0"
+}

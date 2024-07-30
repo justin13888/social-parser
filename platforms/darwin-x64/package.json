@@ -1,0 +1,39 @@
+{
+  "name": "@social-parser/darwin-x64",
+  "description": "Prebuilt binary package for `social-parser` on `darwin-x64`.",
+  "version": "0.1.0",
+  "os": [
+    "darwin"
+  ],
+  "cpu": [
+    "x64"
+  ],
+  "main": "index.node",
+  "files": [
+    "index.node"
+  ],
+  "neon": {
+    "type": "binary",
+    "rust": "x86_64-apple-darwin",
+    "node": "darwin-x64",
+    "os": "darwin",
+    "arch": "x64",
+    "abi": null
+  },
+  "author": "Justin Chung",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/justin13888/social-parser.git"
+  },
+  "keywords": [
+    "social",
+    "cross-platform",
+    "archive",
+    "data-processing"
+  ],
+  "bugs": {
+    "url": "https://github.com/justin13888/social-parser/issues"
+  },
+  "homepage": "https://github.com/justin13888/social-parser#readme",
+  "license": "LGPL-3.0"
+}

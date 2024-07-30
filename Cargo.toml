@@ -1,0 +1,3 @@
+[workspace]
+members = ["crates/social-parser"]
+resolver = "2"
