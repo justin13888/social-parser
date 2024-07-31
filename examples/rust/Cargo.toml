@@ -4,9 +4,6 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+chrono = "0.4.38"
 color-eyre = "0.6.3"
 social_parser = { path = "../../crates/social-parser" }
-
-[[example]]
-name = "loadandsave"
-path = "examples/loadandsave.rs"
