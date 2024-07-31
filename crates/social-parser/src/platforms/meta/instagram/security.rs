@@ -4,7 +4,7 @@ use serde::{Deserialize, Serialize};
 
 use crate::common::ParseError;
 
-#[derive(Serialize, Deserialize, Debug, Clone)]
+#[derive(Serialize, Deserialize, Debug, PartialEq, Eq, Clone)]
 pub struct Security; // TODO: Complete
 
 impl Security {

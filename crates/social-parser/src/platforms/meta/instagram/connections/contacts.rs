@@ -7,9 +7,9 @@ use std::{
 
 use crate::{common::ParseError, platforms::meta::instagram::StringData};
 
-#[derive(Serialize, Deserialize, Debug, Clone)]
+#[derive(Serialize, Deserialize, PartialEq, Eq, Debug, Clone)]
 pub struct Contacts {
-    synced_contacts: Option<SyncedContacts>,
+    pub synced_contacts: Option<SyncedContacts>,
 } // TODO: Complete
 
 impl TryFrom<&Path> for Contacts {
@@ -55,10 +55,10 @@ impl TryFrom<&Path> for Contacts {
     }
 }
 
-#[derive(Serialize, Deserialize, Debug, Clone)]
+#[derive(Serialize, Deserialize, Debug, PartialEq, Eq, Clone)]
 #[serde(deny_unknown_fields)]
 pub struct SyncedContacts {
-    contacts_contact_info: Vec<ContactInfo>,
+    pub contacts_contact_info: Vec<ContactInfo>,
 }
 
 impl TryFrom<&Path> for SyncedContacts {
@@ -80,27 +80,27 @@ impl TryFrom<&Path> for SyncedContacts {
     }
 }
 
-#[derive(Serialize, Deserialize, Debug, Clone)]
+#[derive(Serialize, Deserialize, Debug, PartialEq, Eq, Hash, Clone)]
 #[serde(deny_unknown_fields)]
 pub struct ContactInfo {
-    title: String,
-    media_map_data: MediaMapData,
-    string_map_data: ContactStringMapData,
+    pub title: String,
+    pub media_map_data: MediaMapData,
+    pub string_map_data: ContactStringMapData,
 }
 
-#[derive(Serialize, Deserialize, Debug, Clone)]
+#[derive(Serialize, Deserialize, Debug, PartialEq, Eq, Hash, Clone)]
 #[serde(deny_unknown_fields)]
 pub struct MediaMapData {}
 
-#[derive(Serialize, Deserialize, Debug, Clone)]
+#[derive(Serialize, Deserialize, Debug, PartialEq, Eq, Hash, Clone)]
 #[serde(deny_unknown_fields)]
 pub struct ContactStringMapData {
     #[serde(rename = "First Name")]
-    first_name: StringData,
+    pub first_name: StringData,
     #[serde(rename = "Last Name")]
-    last_name: StringData,
+    pub last_name: StringData,
     #[serde(rename = "Contact Information")]
-    contact_inform: StringData,
+    pub contact_inform: StringData,
     #[serde(rename = "Imported Time")]
-    imported_time: StringData,
+    pub imported_time: StringData,
 }

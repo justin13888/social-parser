@@ -23,7 +23,7 @@ use serde::{Deserialize, Serialize};
 
 use crate::common::{ParseError, WriteError};
 
-#[derive(Serialize, Deserialize, Debug, Clone)]
+#[derive(Serialize, Deserialize, Debug, PartialEq, Eq, Clone)]
 pub struct InstagramArchive {
     pub ads: Option<Ads>,
     pub offsite: Option<Offsite>,
@@ -147,10 +147,10 @@ impl TryFrom<&Path> for InstagramArchive {
     }
 }
 
-#[derive(Serialize, Deserialize, Debug, Clone)]
+#[derive(Serialize, Deserialize, Debug, PartialEq, Eq, Hash, Clone)]
 #[serde(deny_unknown_fields)]
 pub struct StringData {
-    href: String,
-    value: Option<String>,
-    timestamp: i32,
+    pub href: String,
+    pub value: Option<String>,
+    pub timestamp: i32,
 }

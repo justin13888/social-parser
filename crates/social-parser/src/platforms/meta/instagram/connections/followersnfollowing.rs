@@ -7,19 +7,19 @@ use std::{
 
 use crate::{common::ParseError, platforms::meta::instagram::StringData};
 
-#[derive(Serialize, Deserialize, Debug, Clone)]
+#[derive(Serialize, Deserialize, Debug, PartialEq, Eq, Clone)]
 pub struct FollowersNFollowing {
-    favourite_accounts: Option<FavouriteAccounts>,
-    blocked_accounts: Option<BlockedAccounts>,
-    close_friends: Option<CloseFriends>,
-    followers: Option<Followers>,
-    following: Option<Following>,
-    hide_story_from: Option<HideStoryFrom>,
-    pending_follow_requests: Option<PendingFollowRequests>,
-    recent_follow_requests: Option<RecentFollowRequests>,
-    recently_unfollowed: Option<RecentlyUnfollowed>,
-    removed_suggestions: Option<RemovedSuggestions>,
-    restricted_accounts: Option<RestrictedAccounts>,
+    pub favourite_accounts: Option<FavouriteAccounts>,
+    pub blocked_accounts: Option<BlockedAccounts>,
+    pub close_friends: Option<CloseFriends>,
+    pub followers: Option<Followers>,
+    pub following: Option<Following>,
+    pub hide_story_from: Option<HideStoryFrom>,
+    pub pending_follow_requests: Option<PendingFollowRequests>,
+    pub recent_follow_requests: Option<RecentFollowRequests>,
+    pub recently_unfollowed: Option<RecentlyUnfollowed>,
+    pub removed_suggestions: Option<RemovedSuggestions>,
+    pub restricted_accounts: Option<RestrictedAccounts>,
 }
 
 impl TryFrom<&Path> for FollowersNFollowing {
@@ -118,10 +118,10 @@ impl TryFrom<&Path> for FollowersNFollowing {
     }
 }
 
-#[derive(Serialize, Deserialize, Debug, Clone)]
+#[derive(Serialize, Deserialize, Debug, PartialEq, Eq, Clone)]
 #[serde(deny_unknown_fields)]
 pub struct FavouriteAccounts {
-    relationships_feed_favorites: Vec<FavouriteAccount>,
+    pub relationships_feed_favorites: Vec<FavouriteAccount>,
 }
 
 impl TryFrom<&Path> for FavouriteAccounts {
@@ -143,18 +143,18 @@ impl TryFrom<&Path> for FavouriteAccounts {
     }
 }
 
-#[derive(Serialize, Deserialize, Debug, Clone)]
+#[derive(Serialize, Deserialize, Debug, PartialEq, Eq, Clone)]
 #[serde(deny_unknown_fields)]
 pub struct FavouriteAccount {
-    title: String,
-    media_list_data: Vec<()>,
-    string_list_data: Vec<StringData>,
+    pub title: String,
+    pub media_list_data: Vec<()>,
+    pub string_list_data: Vec<StringData>,
 }
 
-#[derive(Serialize, Deserialize, Debug, Clone)]
+#[derive(Serialize, Deserialize, Debug, PartialEq, Eq, Clone)]
 #[serde(deny_unknown_fields)]
 pub struct BlockedAccounts {
-    relationships_blocked_users: Vec<BlockedAccount>,
+    pub relationships_blocked_users: Vec<BlockedAccount>,
 }
 
 impl TryFrom<&Path> for BlockedAccounts {
@@ -176,17 +176,17 @@ impl TryFrom<&Path> for BlockedAccounts {
     }
 }
 
-#[derive(Serialize, Deserialize, Debug, Clone)]
+#[derive(Serialize, Deserialize, Debug, PartialEq, Eq, Hash, Clone)]
 #[serde(deny_unknown_fields)]
 pub struct BlockedAccount {
-    title: String,
-    string_list_data: Vec<StringData>,
+    pub title: String,
+    pub string_list_data: Vec<StringData>,
 }
 
-#[derive(Serialize, Deserialize, Debug, Clone)]
+#[derive(Serialize, Deserialize, Debug, PartialEq, Eq, Clone)]
 #[serde(deny_unknown_fields)]
 pub struct CloseFriends {
-    relationships_close_friends: Vec<Relationship>,
+    pub relationships_close_friends: Vec<Relationship>,
 }
 
 impl TryFrom<&Path> for CloseFriends {
@@ -208,9 +208,9 @@ impl TryFrom<&Path> for CloseFriends {
     }
 }
 
-#[derive(Serialize, Deserialize, Debug, Clone)]
+#[derive(Serialize, Deserialize, Debug, PartialEq, Eq, Clone)]
 #[serde(deny_unknown_fields)]
-pub struct Followers(Vec<Relationship>);
+pub struct Followers(pub Vec<Relationship>);
 
 impl TryFrom<&Path> for Followers {
     type Error = ParseError;
@@ -231,10 +231,10 @@ impl TryFrom<&Path> for Followers {
     }
 }
 
-#[derive(Serialize, Deserialize, Debug, Clone)]
+#[derive(Serialize, Deserialize, Debug, PartialEq, Eq, Clone)]
 #[serde(deny_unknown_fields)]
 pub struct Following {
-    relationships_following: Vec<Relationship>,
+    pub relationships_following: Vec<Relationship>,
 }
 
 impl TryFrom<&Path> for Following {
@@ -256,10 +256,10 @@ impl TryFrom<&Path> for Following {
     }
 }
 
-#[derive(Serialize, Deserialize, Debug, Clone)]
+#[derive(Serialize, Deserialize, Debug, PartialEq, Eq, Clone)]
 #[serde(deny_unknown_fields)]
 pub struct HideStoryFrom {
-    relationships_hide_stories_from: Vec<Relationship>,
+    pub relationships_hide_stories_from: Vec<Relationship>,
 }
 
 impl TryFrom<&Path> for HideStoryFrom {
@@ -281,10 +281,10 @@ impl TryFrom<&Path> for HideStoryFrom {
     }
 }
 
-#[derive(Serialize, Deserialize, Debug, Clone)]
+#[derive(Serialize, Deserialize, Debug, PartialEq, Eq, Clone)]
 #[serde(deny_unknown_fields)]
 pub struct PendingFollowRequests {
-    relationships_follow_requests_sent: Vec<Relationship>,
+    pub relationships_follow_requests_sent: Vec<Relationship>,
 }
 
 impl TryFrom<&Path> for PendingFollowRequests {
@@ -306,10 +306,10 @@ impl TryFrom<&Path> for PendingFollowRequests {
     }
 }
 
-#[derive(Serialize, Deserialize, Debug, Clone)]
+#[derive(Serialize, Deserialize, Debug, PartialEq, Eq, Clone)]
 #[serde(deny_unknown_fields)]
 pub struct RecentFollowRequests {
-    relationships_permanent_follow_requests: Vec<Relationship>,
+    pub relationships_permanent_follow_requests: Vec<Relationship>,
 }
 
 impl TryFrom<&Path> for RecentFollowRequests {
@@ -331,10 +331,10 @@ impl TryFrom<&Path> for RecentFollowRequests {
     }
 }
 
-#[derive(Serialize, Deserialize, Debug, Clone)]
+#[derive(Serialize, Deserialize, Debug, PartialEq, Eq, Clone)]
 #[serde(deny_unknown_fields)]
 pub struct RecentlyUnfollowed {
-    relationships_unfollowed_users: Vec<Relationship>,
+    pub relationships_unfollowed_users: Vec<Relationship>,
 }
 
 impl TryFrom<&Path> for RecentlyUnfollowed {
@@ -356,10 +356,10 @@ impl TryFrom<&Path> for RecentlyUnfollowed {
     }
 }
 
-#[derive(Serialize, Deserialize, Debug, Clone)]
+#[derive(Serialize, Deserialize, Debug, PartialEq, Eq, Clone)]
 #[serde(deny_unknown_fields)]
 pub struct RemovedSuggestions {
-    relationships_dismissed_suggested_users: Vec<Relationship>,
+    pub relationships_dismissed_suggested_users: Vec<Relationship>,
 }
 
 impl TryFrom<&Path> for RemovedSuggestions {
@@ -381,10 +381,10 @@ impl TryFrom<&Path> for RemovedSuggestions {
     }
 }
 
-#[derive(Serialize, Deserialize, Debug, Clone)]
+#[derive(Serialize, Deserialize, Debug, PartialEq, Eq, Clone)]
 #[serde(deny_unknown_fields)]
 pub struct RestrictedAccounts {
-    relationships_restricted_users: Vec<Relationship>,
+    pub relationships_restricted_users: Vec<Relationship>,
 }
 
 impl TryFrom<&Path> for RestrictedAccounts {
@@ -406,10 +406,10 @@ impl TryFrom<&Path> for RestrictedAccounts {
     }
 }
 
-#[derive(Serialize, Deserialize, Debug, Clone)]
+#[derive(Serialize, Deserialize, Debug, PartialEq, Eq, Hash, Clone)]
 #[serde(deny_unknown_fields)]
 pub struct Relationship {
-    title: String,
-    media_list_data: Vec<()>,
-    string_list_data: Vec<StringData>,
+    pub title: String,
+    pub media_list_data: Vec<()>,
+    pub string_list_data: Vec<StringData>,
 }

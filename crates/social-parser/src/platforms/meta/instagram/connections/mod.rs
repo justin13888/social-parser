@@ -8,10 +8,10 @@ use std::path::{absolute, Path};
 
 use crate::common::ParseError;
 
-#[derive(Serialize, Deserialize, Debug, Clone)]
+#[derive(Serialize, Deserialize, Debug, PartialEq, Eq, Clone)]
 pub struct Connections {
-    contacts: Option<Contacts>,
-    followers_n_following: Option<FollowersNFollowing>,
+    pub contacts: Option<Contacts>,
+    pub followers_n_following: Option<FollowersNFollowing>,
 }
 
 impl Connections {
