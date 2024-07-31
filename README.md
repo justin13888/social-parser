@@ -20,7 +20,7 @@ Rust and TypeScript library bindings are provided and can be used for anything (
 To install the package, run:
 
 ```bash
-npm install social-parser
+cargo install social_parser # Rust
 ```
 <!-- TODO: Add other binding info -->
 

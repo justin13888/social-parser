@@ -15,6 +15,14 @@ Install the following prerequisites:
 
 Then follow the instructions below for each binding.
 
+### For Rust
+
+The actual source code is located in the `crates/social-parser` directory. See `examples/rust` for examples on how to use the library.
+
+#### Publishing to crates.io
+
+Sett this link <https://doc.rust-lang.org/cargo/reference/publishing.html>
+
 ### For TypeScript Bindings
 
 TypeScript bindings are generated using [Neon](https://github.com/neon-bindings/neon). Before starting run `npm install` to install the necessary dependencies.
