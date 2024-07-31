@@ -1,68 +1,64 @@
 {
-  "name": "social-parser",
-  "version": "0.1.0",
-  "description": "Library to process archive bundles from social platforms",
-  "main": "./lib/index.cjs",
-  "scripts": {
-    "test": "tsc &&cargo test",
-    "cargo-build": "tsc &&cargo build --message-format=json > cargo.log",
-    "cross-build": "tsc &&cross build --message-format=json > cross.log",
-    "postcargo-build": "neon dist < cargo.log",
-    "postcross-build": "neon dist -m /target < cross.log",
-    "debug": "npm run cargo-build --",
-    "build": "npm run cargo-build -- --release",
-    "cross": "npm run cross-build -- --release",
-    "prepack": "tsc &&neon update",
-    "version": "neon bump --binaries platforms && git add .",
-    "release": "gh workflow run release.yml -f dryrun=false -f version=patch",
-    "dryrun": "gh workflow run publish.yml -f dryrun=true"
-  },
-  "author": "Justin Chung",
-  "license": "LGPL-3.0",
-  "exports": {
-    ".": {
-      "import": {
-        "types": "./lib/index.d.mts",
-        "default": "./lib/index.mjs"
-      },
-      "require": {
-        "types": "./lib/index.d.cts",
-        "default": "./lib/index.cjs"
-      }
-    }
-  },
-  "types": "./lib/index.d.cts",
-  "files": [
-    "lib/**/*.?({c,m}){t,j}s"
-  ],
-  "neon": {
-    "type": "library",
-    "org": "@social-parser",
-    "platforms": "common",
-    "load": "./src/load.cts"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "1.8.3",
-    "@neon-rs/cli": "^0.1.73",
-    "@tsconfig/node20": "^20.1.4",
-    "@types/node": "^20.11.16",
-    "typescript": "^5.3.3"
-  },
-  "dependencies": {
-    "@neon-rs/load": "^0.1.73"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/justin13888/social-parser.git"
-  },
-  "keywords": [
-    "social",
-    "cross-platform",
-    "archive",
-    "data-processing"
-  ],
-  "bugs": {
-    "url": "https://github.com/justin13888/social-parser/issues"
-  },
-  "homepage": "https://github.com/justin13888/social-parser#readme"
+    "name": "social-parser",
+    "version": "0.1.0",
+    "description": "Library to process archive bundles from social platforms",
+    "main": "./lib/index.cjs",
+    "scripts": {
+        "test": "tsc &&cargo test",
+        "cargo-build": "tsc &&cargo build --message-format=json > cargo.log",
+        "cross-build": "tsc &&cross build --message-format=json > cross.log",
+        "postcargo-build": "neon dist < cargo.log",
+        "postcross-build": "neon dist -m /target < cross.log",
+        "debug": "npm run cargo-build --",
+        "build": "npm run cargo-build -- --release",
+        "cross": "npm run cross-build -- --release",
+        "prepack": "tsc &&neon update",
+        "version": "neon bump --binaries platforms && git add .",
+        "release": "gh workflow run release.yml -f dryrun=false -f version=patch",
+        "dryrun": "gh workflow run publish.yml -f dryrun=true",
+        "lint": "biome check .",
+        "lint:fix": "biome check --write ."
+    },
+    "author": "Justin Chung",
+    "license": "LGPL-3.0",
+    "exports": {
+        ".": {
+            "import": {
+                "types": "./lib/index.d.mts",
+                "default": "./lib/index.mjs"
+            },
+            "require": {
+                "types": "./lib/index.d.cts",
+                "default": "./lib/index.cjs"
+            }
+        }
+    },
+    "types": "./lib/index.d.cts",
+    "files": ["lib/**/*.?({c,m}){t,j}s"],
+    "neon": {
+        "type": "library",
+        "org": "@social-parser",
+        "platforms": "common",
+        "load": "./src/load.cts"
+    },
+    "devDependencies": {
+        "@biomejs/biome": "1.8.3",
+        "@neon-rs/cli": "^0.1.73",
+        "@tsconfig/node20": "^20.1.4",
+        "@types/node": "^20.11.16",
+        "typescript": "^5.3.3"
+    },
+    "dependencies": {
+        "@neon-rs/load": "^0.1.73"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/justin13888/social-parser.git"
+    },
+    "keywords": ["social", "cross-platform", "archive", "data-processing"],
+    "bugs": {
+        "url": "https://github.com/justin13888/social-parser/issues"
+    },
+    "homepage": "https://github.com/justin13888/social-parser#readme",
+    "packageManager": "pnpm@9.6.0+sha512.38dc6fba8dba35b39340b9700112c2fe1e12f10b17134715a4aa98ccf7bb035e76fd981cf0bb384dfa98f8d6af5481c2bef2f4266a24bfa20c34eb7147ce0b5e"
 }

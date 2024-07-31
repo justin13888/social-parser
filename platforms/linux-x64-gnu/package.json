@@ -1,39 +1,28 @@
 {
-  "name": "@social-parser/linux-x64-gnu",
-  "description": "Prebuilt binary package for `social-parser` on `linux-x64-gnu`.",
-  "version": "0.1.0",
-  "os": [
-    "linux"
-  ],
-  "cpu": [
-    "x64"
-  ],
-  "main": "index.node",
-  "files": [
-    "index.node"
-  ],
-  "neon": {
-    "type": "binary",
-    "rust": "x86_64-unknown-linux-gnu",
-    "node": "linux-x64-gnu",
-    "os": "linux",
-    "arch": "x64",
-    "abi": "gnu"
-  },
-  "author": "Justin Chung",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/justin13888/social-parser.git"
-  },
-  "keywords": [
-    "social",
-    "cross-platform",
-    "archive",
-    "data-processing"
-  ],
-  "bugs": {
-    "url": "https://github.com/justin13888/social-parser/issues"
-  },
-  "homepage": "https://github.com/justin13888/social-parser#readme",
-  "license": "LGPL-3.0"
+    "name": "@social-parser/linux-x64-gnu",
+    "description": "Prebuilt binary package for `social-parser` on `linux-x64-gnu`.",
+    "version": "0.1.0",
+    "os": ["linux"],
+    "cpu": ["x64"],
+    "main": "index.node",
+    "files": ["index.node"],
+    "neon": {
+        "type": "binary",
+        "rust": "x86_64-unknown-linux-gnu",
+        "node": "linux-x64-gnu",
+        "os": "linux",
+        "arch": "x64",
+        "abi": "gnu"
+    },
+    "author": "Justin Chung",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/justin13888/social-parser.git"
+    },
+    "keywords": ["social", "cross-platform", "archive", "data-processing"],
+    "bugs": {
+        "url": "https://github.com/justin13888/social-parser/issues"
+    },
+    "homepage": "https://github.com/justin13888/social-parser#readme",
+    "license": "LGPL-3.0"
 }

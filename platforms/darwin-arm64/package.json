@@ -1,39 +1,28 @@
 {
-  "name": "@social-parser/darwin-arm64",
-  "description": "Prebuilt binary package for `social-parser` on `darwin-arm64`.",
-  "version": "0.1.0",
-  "os": [
-    "darwin"
-  ],
-  "cpu": [
-    "arm64"
-  ],
-  "main": "index.node",
-  "files": [
-    "index.node"
-  ],
-  "neon": {
-    "type": "binary",
-    "rust": "aarch64-apple-darwin",
-    "node": "darwin-arm64",
-    "os": "darwin",
-    "arch": "arm64",
-    "abi": null
-  },
-  "author": "Justin Chung",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/justin13888/social-parser.git"
-  },
-  "keywords": [
-    "social",
-    "cross-platform",
-    "archive",
-    "data-processing"
-  ],
-  "bugs": {
-    "url": "https://github.com/justin13888/social-parser/issues"
-  },
-  "homepage": "https://github.com/justin13888/social-parser#readme",
-  "license": "LGPL-3.0"
+    "name": "@social-parser/darwin-arm64",
+    "description": "Prebuilt binary package for `social-parser` on `darwin-arm64`.",
+    "version": "0.1.0",
+    "os": ["darwin"],
+    "cpu": ["arm64"],
+    "main": "index.node",
+    "files": ["index.node"],
+    "neon": {
+        "type": "binary",
+        "rust": "aarch64-apple-darwin",
+        "node": "darwin-arm64",
+        "os": "darwin",
+        "arch": "arm64",
+        "abi": null
+    },
+    "author": "Justin Chung",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/justin13888/social-parser.git"
+    },
+    "keywords": ["social", "cross-platform", "archive", "data-processing"],
+    "bugs": {
+        "url": "https://github.com/justin13888/social-parser/issues"
+    },
+    "homepage": "https://github.com/justin13888/social-parser#readme",
+    "license": "LGPL-3.0"
 }
