@@ -31,7 +31,6 @@ impl InstagramArchive {
         let mut connections = None;
         let mut media = None;
         let mut personal = None;
-        let mut security = None;
         let mut activity = None;
 
         for entry in path.as_ref().read_dir()? {
