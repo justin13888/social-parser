@@ -2,7 +2,10 @@ use color_eyre::eyre::{OptionExt, Result};
 use social_parser::platforms::meta::instagram::{
     connections::followersnfollowing::Relationship, InstagramArchive,
 };
-use std::{collections::HashSet, path};
+use std::{
+    collections::{HashMap, HashSet},
+    path,
+};
 
 // See who doesn't follow you back
 fn main() -> Result<()> {
@@ -26,7 +29,9 @@ fn main() -> Result<()> {
         .ok_or_eyre("No followers")?
         .0
         .into_iter()
-        .collect::<HashSet<Relationship>>();
+        .flat_map(|r| r.string_list_data)
+        .map(|s| (s.href, s.value))
+        .collect::<HashMap<String, Option<String>>>();
     let following = fnf
         .following
         .ok_or_eyre("No following")?
@@ -34,14 +39,15 @@ fn main() -> Result<()> {
 
     let not_following_back: Vec<_> = following
         .into_iter()
-        .filter(|r| !followers.contains(r))
         .flat_map(|r| r.string_list_data)
         .map(|s| (s.href, s.value))
+        .filter(|(following_href, _following_value)| !followers.contains_key(following_href))
         .collect();
 
-    not_following_back.into_iter().for_each(|(href, value)| {
-        println!("{}: {}", value.unwrap_or("???".to_string()), href);
+    not_following_back.iter().for_each(|(href, value)| {
+        println!("{}: {}", value.clone().unwrap_or("???".to_string()), href);
     });
+    println!("\n{} don't follow you back", not_following_back.len());
 
     Ok(())
 }
