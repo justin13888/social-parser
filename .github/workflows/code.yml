@@ -1,0 +1,39 @@
+name: Code quality
+
+on:
+#   push:
+#     branches: [ main ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  cargo-fmt-clippy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Install Rust
+      uses: actions-rs/toolchain@v1
+      with:
+        profile: minimal
+        toolchain: stable
+        components: rustfmt
+
+    - name: Run rustfmt
+      run: cargo fmt -- --check
+
+    - name: Run clippy
+      run: cargo clippy --
+  biome-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Biome
+        uses: biomejs/setup-biome@v2
+        with:
+          version: latest
+      - name: Run Biome
+        run: biome ci .
