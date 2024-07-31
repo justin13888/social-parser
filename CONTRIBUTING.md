@@ -11,6 +11,7 @@ To get started, fork the repository and clone it to your local machine.
 Install the following prerequisites:
 
 - Rust
+- Python 3.10+
 - Node.js
 
 Then follow the instructions below for each binding.
@@ -22,6 +23,19 @@ The actual source code is located in the `crates/social-parser` directory. See `
 #### Publishing to crates.io
 
 See this link <https://doc.rust-lang.org/cargo/reference/publishing.html>
+
+### For Python Bindings
+
+Python bindings are generated using [PyO3](https://github.com/PyO3/pyo3). Before starting, activate a virtualenv (e.g. with pyenv or anaconda) and run `pip install maturin` to install the necessary dependencies.
+
+For more details on how and why, see the [PyO3 documentation](https://pyo3.rs/v0.22.2/getting-started).
+
+While your virtualenv is active, use `maturin develop` to make the Python bindings importable in that environment.
+
+Here are other useful commands:
+
+- Build wheel: `maturin build`
+- Publish to PyPI: `maturin publish`
 
 ### For TypeScript Bindings
 
@@ -44,6 +58,7 @@ The directory structure of this project is:
 ```
 social-parser/
 ├── Cargo.toml
+├── examples/
 ├── README.md
 ├── lib/
 ├── src/
@@ -61,6 +76,7 @@ social-parser/
 | Entry          | Purpose                                                                                                                                  |
 |----------------|------------------------------------------------------------------------------------------------------------------------------------------|
 | `Cargo.toml`   | The Cargo [manifest file](https://doc.rust-lang.org/cargo/reference/manifest.html), which informs the `cargo` command.                   |
+| `examples/`    | The directory containing example code for the library.                                                                                 |
 | `README.md`    | This file.                                                                                                                               |
 | `lib/`         | The directory containing the generated output from [tsc](https://typescriptlang.org).                                                    |
 | `src/`         | The directory containing the TypeScript source files.                                                                                    |
