@@ -1,5 +1,7 @@
 use neon::prelude::*;
 
+use crate::platforms;
+
 // use log::{info, Log, Metadata, Record};
 
 // struct JsLogger {
@@ -30,15 +32,10 @@ use neon::prelude::*;
 //     fn flush(&self) {}
 // }
 
-fn init_js_bindings(cx: &mut ModuleContext) -> NeonResult<()> {
-    // cx.export_function("hello", hello)?;
-
-    Ok(())
-}
-
+/// Initialize context for root module
 pub fn init_context(cx: &mut ModuleContext) -> NeonResult<()> {
     // TODO: Implement logger
-    init_js_bindings(cx)?;
+    platforms::init_context(cx)?;
 
     Ok(())
 }

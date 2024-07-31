@@ -1,5 +1,5 @@
 [package]
-name = "social-parser"
+name = "social_parser"
 version = "0.1.0"
 description = "Library to process archive bundles from social platforms"
 authors = ["Justin Chung"]
@@ -8,10 +8,16 @@ edition = "2021"
 exclude = ["index.node"]
 
 [lib]
-crate-type = ["cdylib"]
+crate-type = [
+    "lib",
+    "cdylib"
+]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
 log = { version = "0.4.22", features = ["serde", "std"] }
 neon = "1"
+serde = { version = "1.0.204", features = ["derive"] }
+serde_json = "1.0.121"
+thiserror = "1.0.63"
