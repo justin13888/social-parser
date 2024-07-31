@@ -1,38 +1,23 @@
 pub mod activity;
-pub mod ads;
 pub mod connections;
-pub mod logged;
 pub mod media;
-pub mod offsite;
 pub mod personal;
-pub mod preferences;
-pub mod security;
 
 use std::path::{absolute, Path};
 
 use activity::Activity;
-use ads::Ads;
 use connections::Connections;
-use logged::Logged;
 use media::Media;
-use offsite::Offsite;
 use personal::Personal;
-use preferences::Preferences;
-use security::Security;
 use serde::{Deserialize, Serialize};
 
 use crate::common::{ParseError, WriteError};
 
 #[derive(Serialize, Deserialize, Debug, PartialEq, Eq, Clone)]
 pub struct InstagramArchive {
-    pub ads: Option<Ads>,
-    pub offsite: Option<Offsite>,
     pub connections: Option<Connections>,
-    pub logged: Option<Logged>,
     pub media: Option<Media>,
     pub personal: Option<Personal>,
-    pub preferences: Option<Preferences>,
-    pub security: Option<Security>,
     pub activity: Option<Activity>,
 }
 
@@ -43,13 +28,9 @@ impl InstagramArchive {
         assert!(path.as_ref().is_dir());
 
         // Load all directories in the directory
-        let mut ads = None;
         let mut connections = None;
-        let mut logged = None;
         let mut media = None;
-        let mut offsite = None;
         let mut personal = None;
-        let mut preferences = None;
         let mut security = None;
         let mut activity = None;
 
@@ -66,30 +47,20 @@ impl InstagramArchive {
             }
 
             match path.file_stem().and_then(|s| s.to_str()) {
-                Some("ads_information") => {
-                    ads = Some(Ads::from_folder(&path)?);
-                }
-                Some("apps_and_websites_off_of_instagram") => {
-                    offsite = Some(Offsite::from_folder(&path)?);
-                }
+                Some("ads_information") => {}
+                Some("apps_and_websites_off_of_instagram") => {}
                 Some("connections") => {
                     connections = Some(Connections::from_folder(&path)?);
                 }
-                Some("logged_information") => {
-                    logged = Some(Logged::from_folder(&path)?);
-                }
+                Some("logged_information") => {}
                 Some("media") => {
                     media = Some(Media::from_folder(&path)?);
                 }
                 Some("personal_information") => {
                     personal = Some(Personal::from_folder(&path)?);
                 }
-                Some("preferences") => {
-                    preferences = Some(Preferences::from_folder(&path)?);
-                }
-                Some("security_and_login_information") => {
-                    security = Some(Security::from_folder(&path)?);
-                }
+                Some("preferences") => {}
+                Some("security_and_login_information") => {}
                 Some("your_instagram_activity") => {
                     activity = Some(Activity::from_folder(&path)?);
                 }
@@ -103,14 +74,9 @@ impl InstagramArchive {
         }
 
         Ok(Self {
-            ads,
-            offsite,
             connections,
-            logged,
             media,
             personal,
-            preferences,
-            security,
             activity,
         })
     }
