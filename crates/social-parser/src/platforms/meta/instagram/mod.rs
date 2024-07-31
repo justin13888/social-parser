@@ -1,14 +1,12 @@
 pub mod activity;
 pub mod connections;
 pub mod media;
-pub mod personal;
 
 use std::path::{absolute, Path};
 
 use activity::Activity;
 use connections::Connections;
 use media::Media;
-use personal::Personal;
 use serde::{Deserialize, Serialize};
 
 use crate::common::{ParseError, WriteError};
@@ -17,7 +15,6 @@ use crate::common::{ParseError, WriteError};
 pub struct InstagramArchive {
     pub connections: Option<Connections>,
     pub media: Option<Media>,
-    pub personal: Option<Personal>,
     pub activity: Option<Activity>,
 }
 
@@ -30,7 +27,6 @@ impl InstagramArchive {
         // Load all directories in the directory
         let mut connections = None;
         let mut media = None;
-        let mut personal = None;
         let mut activity = None;
 
         for entry in path.as_ref().read_dir()? {
@@ -55,13 +51,11 @@ impl InstagramArchive {
                 Some("media") => {
                     media = Some(Media::from_folder(&path)?);
                 }
-                Some("personal_information") => {
-                    personal = Some(Personal::from_folder(&path)?);
-                }
+                Some("personal_information") => {}
                 Some("preferences") => {}
                 Some("security_and_login_information") => {}
                 Some("your_instagram_activity") => {
-                    activity = Some(Activity::from_folder(&path)?);
+                    activity = Some(Activity::try_from(path.as_ref())?);
                 }
                 _ => {
                     return Err(ParseError::UnexpectedFormat(format!(
@@ -75,7 +69,6 @@ impl InstagramArchive {
         Ok(Self {
             connections,
             media,
-            personal,
             activity,
         })
     }
@@ -114,8 +107,41 @@ impl TryFrom<&Path> for InstagramArchive {
 
 #[derive(Serialize, Deserialize, Debug, PartialEq, Eq, Hash, Clone)]
 #[serde(deny_unknown_fields)]
-pub struct StringData {
+pub struct LinkTimeValueData {
     pub href: String,
     pub value: Option<String>,
     pub timestamp: i32,
+}
+
+#[derive(Serialize, Deserialize, Debug, PartialEq, Eq, Hash, Clone)]
+#[serde(deny_unknown_fields)]
+pub struct LinkTimeData {
+    pub href: String,
+    pub timestamp: i32,
+}
+
+#[derive(Serialize, Deserialize, Debug, PartialEq, Eq, Hash, Clone)]
+#[serde(deny_unknown_fields)]
+pub struct LinkData {
+    pub href: String,
+    pub value: Option<String>,
+}
+
+#[derive(Serialize, Deserialize, Debug, PartialEq, Eq, Hash, Clone)]
+#[serde(deny_unknown_fields)]
+pub struct Value {
+    pub value: String,
+}
+
+#[derive(Serialize, Deserialize, Debug, PartialEq, Eq, Hash, Clone)]
+#[serde(deny_unknown_fields)]
+pub struct Timestamp {
+    pub timestamp: u64,
+}
+
+#[derive(Serialize, Deserialize, Debug, PartialEq, Eq, Hash, Clone)]
+#[serde(deny_unknown_fields)]
+pub struct MediaUri {
+    pub uri: String,
+    pub creation_timestamp: Option<u64>,
 }

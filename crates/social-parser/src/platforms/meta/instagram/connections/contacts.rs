@@ -5,17 +5,17 @@ use std::{
     path::{absolute, Path},
 };
 
-use crate::{common::ParseError, platforms::meta::instagram::StringData};
+use crate::{common::ParseError, platforms::meta::instagram::LinkTimeValueData};
 
 #[derive(Serialize, Deserialize, PartialEq, Eq, Debug, Clone)]
 pub struct Contacts {
     pub synced_contacts: Option<SyncedContacts>,
-} // TODO: Complete
+}
 
 impl TryFrom<&Path> for Contacts {
     type Error = ParseError;
 
-    /// Load from a file. Assumes path is a directory.
+    /// Load from a directory. Assumes path is a directory.
     fn try_from(path: &Path) -> Result<Contacts, Self::Error> {
         if !path.is_dir() {
             return Err(ParseError::UnexpectedFormat(format!(
@@ -96,11 +96,11 @@ pub struct MediaMapData {}
 #[serde(deny_unknown_fields)]
 pub struct ContactStringMapData {
     #[serde(rename = "First Name")]
-    pub first_name: StringData,
+    pub first_name: LinkTimeValueData,
     #[serde(rename = "Last Name")]
-    pub last_name: StringData,
+    pub last_name: LinkTimeValueData,
     #[serde(rename = "Contact Information")]
-    pub contact_inform: StringData,
+    pub contact_inform: LinkTimeValueData,
     #[serde(rename = "Imported Time")]
-    pub imported_time: StringData,
+    pub imported_time: LinkTimeValueData,
 }

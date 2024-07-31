@@ -5,7 +5,7 @@ use std::{
     path::{absolute, Path},
 };
 
-use crate::{common::ParseError, platforms::meta::instagram::StringData};
+use crate::{common::ParseError, platforms::meta::instagram::LinkTimeValueData};
 
 #[derive(Serialize, Deserialize, Debug, PartialEq, Eq, Clone)]
 pub struct FollowersNFollowing {
@@ -148,7 +148,7 @@ impl TryFrom<&Path> for FavouriteAccounts {
 pub struct FavouriteAccount {
     pub title: String,
     pub media_list_data: Vec<()>,
-    pub string_list_data: Vec<StringData>,
+    pub string_list_data: Vec<LinkTimeValueData>,
 }
 
 #[derive(Serialize, Deserialize, Debug, PartialEq, Eq, Clone)]
@@ -180,7 +180,7 @@ impl TryFrom<&Path> for BlockedAccounts {
 #[serde(deny_unknown_fields)]
 pub struct BlockedAccount {
     pub title: String,
-    pub string_list_data: Vec<StringData>,
+    pub string_list_data: Vec<LinkTimeValueData>,
 }
 
 #[derive(Serialize, Deserialize, Debug, PartialEq, Eq, Clone)]
@@ -411,5 +411,5 @@ impl TryFrom<&Path> for RestrictedAccounts {
 pub struct Relationship {
     pub title: String,
     pub media_list_data: Vec<()>,
-    pub string_list_data: Vec<StringData>,
+    pub string_list_data: Vec<LinkTimeValueData>,
 }
