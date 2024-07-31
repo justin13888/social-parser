@@ -9,11 +9,12 @@ declare module "./load.cjs" {
   function hello(): string;
 }
 
+// TODO: Implement JS bindings here
+
 export type Greeting = {
-  message: string
+  message: string,
 };
 
 export function greeting(): Greeting {
-  const message = addon.hello();
-  return { message };
+  return { message: "hello" };
 }
