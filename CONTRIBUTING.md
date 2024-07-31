@@ -21,7 +21,7 @@ The actual source code is located in the `crates/social-parser` directory. See `
 
 #### Publishing to crates.io
 
-Sett this link <https://doc.rust-lang.org/cargo/reference/publishing.html>
+See this link <https://doc.rust-lang.org/cargo/reference/publishing.html>
 
 ### For TypeScript Bindings
 
