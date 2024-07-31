@@ -2,8 +2,6 @@ use std::path::PathBuf;
 
 use thiserror::Error;
 
-pub mod types;
-
 #[derive(Error, Debug)]
 pub enum ParseError {
     Serde(PathBuf, serde_json::Error),

@@ -1,4 +1,4 @@
-use color_eyre::eyre::{eyre, OptionExt, Result};
+use color_eyre::eyre::{OptionExt, Result};
 use social_parser::platforms::meta::instagram::{
     connections::followersnfollowing::Relationship, InstagramArchive,
 };
