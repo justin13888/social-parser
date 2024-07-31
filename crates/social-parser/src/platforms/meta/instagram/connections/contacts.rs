@@ -5,7 +5,7 @@ use std::{
     path::{absolute, Path},
 };
 
-use crate::common::ParseError;
+use crate::{common::ParseError, platforms::meta::instagram::StringData};
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct Contacts {
@@ -38,8 +38,8 @@ impl TryFrom<&Path> for Contacts {
                 )));
             }
 
-            match path.file_stem().and_then(|s| s.to_str()) {
-                Some("synced_contacts") => {
+            match path.file_name().and_then(|s| s.to_str()) {
+                Some("synced_contacts.json") => {
                     synced_contacts = Some(SyncedContacts::try_from(path.as_path())?);
                 }
                 _ => {
@@ -76,7 +76,7 @@ impl TryFrom<&Path> for SyncedContacts {
         let file = File::open(path)?;
         let reader = BufReader::new(file);
 
-        serde_json::from_reader(reader).map_err(ParseError::Serde)
+        serde_json::from_reader(reader).map_err(|e| ParseError::Serde(path.to_owned(), e))
     }
 }
 
@@ -85,7 +85,7 @@ impl TryFrom<&Path> for SyncedContacts {
 pub struct ContactInfo {
     title: String,
     media_map_data: MediaMapData,
-    string_map_data: StringMapData,
+    string_map_data: ContactStringMapData,
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
@@ -94,21 +94,13 @@ pub struct MediaMapData {}
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
 #[serde(deny_unknown_fields)]
-pub struct StringMapData {
+pub struct ContactStringMapData {
     #[serde(rename = "First Name")]
-    first_name: StringMap,
+    first_name: StringData,
     #[serde(rename = "Last Name")]
-    last_name: StringMap,
+    last_name: StringData,
     #[serde(rename = "Contact Information")]
-    contact_inform: StringMap,
+    contact_inform: StringData,
     #[serde(rename = "Imported Time")]
-    imported_time: StringMap,
-}
-
-#[derive(Serialize, Deserialize, Debug, Clone)]
-#[serde(deny_unknown_fields)]
-pub struct StringMap {
-    href: String,
-    value: String,
-    timestamp: i32,
+    imported_time: StringData,
 }

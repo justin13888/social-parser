@@ -1,10 +1,12 @@
+use std::path::PathBuf;
+
 use thiserror::Error;
 
 pub mod types;
 
 #[derive(Error, Debug)]
 pub enum ParseError {
-    Serde(#[from] serde_json::Error),
+    Serde(PathBuf, serde_json::Error),
     Io(#[from] std::io::Error),
     UnexpectedFormat(String),
 }

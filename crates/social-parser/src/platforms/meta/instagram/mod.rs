@@ -8,7 +8,7 @@ pub mod personal;
 pub mod preferences;
 pub mod security;
 
-use std::path::{self, absolute, Path, PathBuf};
+use std::path::{absolute, Path};
 
 use activity::Activity;
 use ads::Ads;
@@ -145,4 +145,12 @@ impl TryFrom<&Path> for InstagramArchive {
             ))
         }
     }
+}
+
+#[derive(Serialize, Deserialize, Debug, Clone)]
+#[serde(deny_unknown_fields)]
+pub struct StringData {
+    href: String,
+    value: Option<String>,
+    timestamp: i32,
 }
