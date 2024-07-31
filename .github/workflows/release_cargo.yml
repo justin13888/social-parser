@@ -1,9 +1,8 @@
 name: Cargo release
 
 on:
-  push:
-    tags:
-      - 'v*.*.*'  # Trigger the workflow for version tags
+  release:
+    types: [published]
 
 jobs:
   release:
