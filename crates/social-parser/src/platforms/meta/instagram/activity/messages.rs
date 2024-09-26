@@ -46,6 +46,7 @@ impl TryFrom<&Path> for Messages {
                     inbox = Some(Inbox::try_from(path.as_path())?);
                 }
                 Some("reported_conversations.json") | Some("secret_conversations.json") => {
+                    // TODO: Implement
                     if !path.is_file() {
                         return Err(ParseError::UnexpectedFormat(format!(
                             "Found unexpected non-file in Messages: {:?}",
@@ -54,6 +55,7 @@ impl TryFrom<&Path> for Messages {
                     }
                 }
                 Some("cross-app-inbox") | Some("message_requests") => {
+                    // TODO: Implement
                     if !path.is_dir() {
                         return Err(ParseError::UnexpectedFormat(format!(
                             "Found unexpected non-directory in Messages: {:?}",
@@ -140,6 +142,7 @@ impl TryFrom<&Path> for Inbox {
                             Some("photos") => {} // TODO: See how to store the photos inside
                             Some("videos") => {} // TODO: See how to store the videos inside
                             Some("audio") => {}  // TODO: See how to store the audio inside
+                            Some("gifs") => {}   // TODO: See how to store the gif inside
                             _ => {
                                 return Err(ParseError::UnexpectedFormat(format!(
                                     "Found unexpected file in inbox: {:?}",
@@ -223,6 +226,7 @@ pub struct Message {
     pub content: Option<String>,
     pub photos: Option<Vec<MediaUri>>,
     pub videos: Option<Vec<MediaUri>>,
+    pub gifs: Option<Vec<MediaUri>>,
     pub audio_files: Option<Vec<MediaUri>>,
     pub share: Option<Share>,
     pub call_duration: Option<u32>,
