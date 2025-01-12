@@ -12,8 +12,12 @@ use crate::{common::ParseError, platforms::meta::instagram::MediaUri};
 
 #[derive(Serialize, Deserialize, Debug, PartialEq, Eq, Clone)]
 pub struct Messages {
-    // photos: Photos, // TODO: Implement
     pub inbox: Option<Inbox>,
+    // photos: Photos, // TODO: Implement
+    // pub cross_app_inbox: Option<Inbox>,
+    // pub reported_conversations: Option<Vec<InboxData>>,
+    // pub secret_conversations: Option<Vec<InboxData>>,
+    // pub ai_conversations: Option<Vec<InboxData>>,
 } // TODO
 
 impl TryFrom<&Path> for Messages {
@@ -45,7 +49,9 @@ impl TryFrom<&Path> for Messages {
                 Some("inbox") => {
                     inbox = Some(Inbox::try_from(path.as_path())?);
                 }
-                Some("reported_conversations.json") | Some("secret_conversations.json") => {
+                Some("reported_conversations.json")
+                | Some("secret_conversations.json")
+                | Some("ai_conversations.json") => {
                     // TODO: Implement
                     if !path.is_file() {
                         return Err(ParseError::UnexpectedFormat(format!(
@@ -232,6 +238,7 @@ pub struct Message {
     pub call_duration: Option<u32>,
     pub is_unsent: Option<bool>,
     pub is_geoblocked_for_viewer: bool,
+    pub is_unsent_image_by_messenger_kid_parent: bool,
     pub reactions: Option<Vec<Reaction>>,
 }
 
@@ -252,6 +259,8 @@ pub struct Reaction {
     pub reaction: String,
     /// User who reacted
     pub actor: String,
+    /// Timestamp of the reaction in seconds
+    pub timestamp: Option<u64>,
 }
 
 #[derive(Serialize, Deserialize, Debug, PartialEq, Eq, Clone)]

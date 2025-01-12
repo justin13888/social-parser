@@ -13,18 +13,17 @@ exclude = ["index.node"]
 
 [lib]
 name = "social_parser"
-crate-type = [
-    "lib",
-    "cdylib"
-]
+crate-type = ["lib", "cdylib"]
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[features]
+python = ["dep:pyo3"]
+typescript = ["dep:neon"]
 
 [dependencies]
 log = { version = "0.4.22", features = ["serde", "std"] }
-neon = "1"
-pyo3 = "0.22.0"
+neon = { version = "1", optional = true }
+pyo3 = { version = "0.23.4", optional = true }
 regex = "1.10.5"
 serde = { version = "1.0.204", features = ["derive"] }
 serde_json = "1.0.121"
-thiserror = "1.0.63"
+thiserror = "2.0.11"

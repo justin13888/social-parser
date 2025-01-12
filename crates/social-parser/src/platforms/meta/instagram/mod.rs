@@ -144,4 +144,5 @@ pub struct Timestamp {
 pub struct MediaUri {
     pub uri: String,
     pub creation_timestamp: Option<u64>,
+    pub backup_uri: Option<String>,
 }
