@@ -233,12 +233,13 @@ pub struct Message {
     pub photos: Option<Vec<MediaUri>>,
     pub videos: Option<Vec<MediaUri>>,
     pub gifs: Option<Vec<MediaUri>>,
+    pub files: Option<Vec<MediaUri>>,
     pub audio_files: Option<Vec<MediaUri>>,
     pub share: Option<Share>,
     pub call_duration: Option<u32>,
     pub is_unsent: Option<bool>,
     pub is_geoblocked_for_viewer: bool,
-    pub is_unsent_image_by_messenger_kid_parent: bool,
+    pub is_unsent_image_by_messenger_kid_parent: Option<bool>,
     pub reactions: Option<Vec<Reaction>>,
 }
 

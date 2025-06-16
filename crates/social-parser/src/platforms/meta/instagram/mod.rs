@@ -99,7 +99,7 @@ impl TryFrom<&Path> for InstagramArchive {
             todo!()
         } else {
             Err(ParseError::UnexpectedFormat(
-                "Unknown file type".to_string(),
+                format!("Expected a directory or zip file, found: {:?}", absolute(path)),
             ))
         }
     }

@@ -1,4 +1,5 @@
-use neon::prelude::*;
+#[cfg(feature = "typescript")]
+pub use typescript::*;
 
 use crate::platforms;
 
@@ -32,10 +33,16 @@ use crate::platforms;
 //     fn flush(&self) {}
 // }
 
-/// Initialize context for root module
-pub fn init_context(cx: &mut ModuleContext) -> NeonResult<()> {
-    // TODO: Implement logger
-    platforms::init_context(cx)?;
 
-    Ok(())
+#[cfg(feature = "typescript")]
+mod typescript {
+    use neon::prelude::*;
+
+    /// Initialize context for root module
+    pub fn init_context(cx: &mut ModuleContext) -> NeonResult<()> {
+        // TODO: Implement logger
+        platforms::init_context(cx)?;
+
+        Ok(())
+    }
 }

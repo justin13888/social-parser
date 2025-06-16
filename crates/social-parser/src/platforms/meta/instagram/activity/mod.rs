@@ -66,6 +66,9 @@ impl TryFrom<&Path> for Activity {
                 Some("likes") => {
                     likes = Some(Likes::try_from(path.as_ref())?);
                 }
+                Some("media") => {
+                    // todo!("Parsing for media not implemented yet");
+                }
                 Some("messages") => {
                     messages = Some(Messages::try_from(path.as_ref())?);
                 }
@@ -81,6 +84,12 @@ impl TryFrom<&Path> for Activity {
                 Some("subscriptions") => {}
                 Some("threads") => {
                     // threads = Some(Threads::try_from(path.as_ref())?); // TODO: Implement
+                }
+                Some("avatars_store") => {
+                    // todo!("Parsing for avatars store not implemented yet");
+                }
+                Some("story_interactions") => {
+                    // todo!("Parsing for story interactions not implemented yet");
                 }
                 _ => {
                     return Err(ParseError::UnexpectedFormat(format!(

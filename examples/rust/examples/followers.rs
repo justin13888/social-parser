@@ -1,9 +1,9 @@
+//! Find out who doesn't follow you back on Instagram.
+
 use color_eyre::eyre::{OptionExt, Result};
-use social_parser::platforms::meta::instagram::{
-    connections::followersnfollowing::Relationship, InstagramArchive,
-};
+use social_parser::platforms::meta::instagram::InstagramArchive;
 use std::{
-    collections::{HashMap, HashSet},
+    collections::HashMap,
     path,
 };
 
@@ -12,7 +12,7 @@ fn main() -> Result<()> {
     color_eyre::install()?;
 
     let path = path::absolute("./data/instagram")?;
-    println!("Parsing at: {:?}", path);
+    println!("Parsing at: {path:?}");
 
     // Load Instagram Archive
     let archive = InstagramArchive::try_from(path.as_path())?;

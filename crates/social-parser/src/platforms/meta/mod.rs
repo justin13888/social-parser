@@ -1,10 +1,16 @@
-use neon::prelude::*;
-
 pub mod instagram;
 
-/// Initialize context for meta module
-pub(super) fn init_context(_cx: &mut ModuleContext) -> NeonResult<()> {
-    // TODO: Implement
+#[cfg(feature = "typescript")]
+pub use typescript::*;
 
-    Ok(())
+#[cfg(feature = "typescript")]
+mod typescript {
+    use neon::prelude::*;
+
+    /// Initialize context for meta module
+    pub(super) fn init_context(_cx: &mut ModuleContext) -> NeonResult<()> {
+        // TODO: Implement
+
+        Ok(())
+    }
 }

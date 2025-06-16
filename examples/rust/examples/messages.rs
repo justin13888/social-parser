@@ -1,3 +1,5 @@
+//! A simple example to parse Instagram messages of a specific ID from an archive.
+
 use chrono::prelude::*;
 use color_eyre::eyre::{OptionExt, Result};
 use social_parser::platforms::meta::instagram::InstagramArchive;
@@ -8,7 +10,8 @@ fn main() -> Result<()> {
     color_eyre::install()?;
 
     let path = path::absolute("./data/instagram")?;
-    println!("Parsing at: {:?}", path);
+    println!("Parsing at: {path:?}");
+    assert!(path.is_dir(), "Path must be a directory");
 
     // Load Instagram Archive
     let archive = InstagramArchive::try_from(path.as_path())?;

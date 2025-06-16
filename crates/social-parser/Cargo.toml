@@ -16,6 +16,7 @@ name = "social_parser"
 crate-type = ["lib", "cdylib"]
 
 [features]
+default = []
 python = ["dep:pyo3"]
 typescript = ["dep:neon"]
 
