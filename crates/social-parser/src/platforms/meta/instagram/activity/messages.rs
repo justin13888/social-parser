@@ -145,10 +145,11 @@ impl TryFrom<&Path> for Inbox {
                                 }
                                 message_json_paths.push(path);
                             }
+                            Some("files") => {} // TODO: See how to store the files inside
                             Some("photos") => {} // TODO: See how to store the photos inside
                             Some("videos") => {} // TODO: See how to store the videos inside
-                            Some("audio") => {}  // TODO: See how to store the audio inside
-                            Some("gifs") => {}   // TODO: See how to store the gif inside
+                            Some("audio") => {} // TODO: See how to store the audio inside
+                            Some("gifs") => {}  // TODO: See how to store the gif inside
                             _ => {
                                 return Err(ParseError::UnexpectedFormat(format!(
                                     "Found unexpected file in inbox: {:?}",
